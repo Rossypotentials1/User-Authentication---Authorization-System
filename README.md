@@ -1,6 +1,7 @@
 # Spring Security JWT Application
 This Spring Boot application demonstrates the use of JWT (JSON Web Tokens) for authentication and authorization. It includes features for user registration, login, and access control for different roles (Admin and User).
 
+
 ## Table of Contents
 Prerequisites
 Setup Instructions
@@ -15,6 +16,8 @@ Java 17 or higher
 Maven 3.6.3 or higher
 MySQL database
 Setup Instructions
+
+
 ### Clone the repository:
 
 bash
@@ -58,6 +61,7 @@ Copy code
     "password": "password123",
     "role": "USER"
 }
+
 Response:
 json
 Copy code
@@ -66,6 +70,9 @@ Copy code
     "email": "rose@example.com",
     "message": "User Saved Successfully"
 }
+
+
+
 Sign In
 URL: /auth/signin
 Method: POST
@@ -85,7 +92,10 @@ Copy code
     "expirationTime": "24Hrs",
     "message": "Successfully Signed In"
 }
-User Endpoints
+
+
+
+#### User Endpoints
 View Profile
 URL: /user/view-profile
 Method: GET
@@ -99,7 +109,11 @@ Copy code
     "email": "rose@example.com",
     "message": "User details retrieved successfully"
 }
-Admin Endpoints
+
+
+
+
+#####Admin Endpoints
 Save Product
 URL: /admin/saveProduct
 Method: POST
@@ -118,6 +132,11 @@ Copy code
     "id": 1,
     "productName": "Product Name"
 }
+
+
+
+
+
 Delete User
 URL: /admin/deleteUser/{userId}
 Method: DELETE
@@ -147,6 +166,10 @@ Copy code
         "productName": "Product 2"
     }
 ]
+
+
+
+
 Admin and User Access
 URL: /admin-user
 Method: GET
@@ -160,19 +183,32 @@ Copy code
 }
 
 
+
+
 ## Project Structure
 controller: Contains the REST controllers for handling HTTP requests.
+
 service: Contains the service layer for business logic.
+
 repository: Contains the repository layer for data access.
+
 entity: Contains the entity classes representing the database tables.
+
 config: Contains the security configuration classes.
+
 dto: Contains the Data Transfer Object classes.
+
 utils: Contains utility classes like JwtUtils.
 Security Configuration
+
 The security configuration is set up to:
 
 Allow unauthenticated access to /auth/** and /public/**.
+
 Restrict access to /admin/** to users with the ADMIN role.
+
 Restrict access to /user/** to users with the USER role.
+
 Allow access to /admin-user/** to both ADMIN and USER roles.
+
 Use JWT tokens for stateless authentication.
