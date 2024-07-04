@@ -225,3 +225,5 @@ Security Configuration
 * Allow access to /admin-user/** to both ADMIN and USER roles.
 
 * Use JWT tokens for stateless authentication.
+
+
