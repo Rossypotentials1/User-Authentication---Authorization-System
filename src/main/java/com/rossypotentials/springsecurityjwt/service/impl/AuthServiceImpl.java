@@ -42,7 +42,6 @@ public class AuthServiceImpl implements AuthService {
         UserModel savedUserModel = userRepository.save(userModel);
 
         if (savedUserModel != null && savedUserModel.getId() > 0) {
-            //response.setOurUsers(savedUserModel);
             response.setMessage("User Saved Successfully");
             response.setStatusCode(200);
         } else {
