@@ -17,21 +17,18 @@ import java.util.function.Function;
 @Component
 
 public class JwtUtils {
-
-    private SecretKey secretKey;
+ private SecretKey secretKey;
 
     @Value("${jwt.expiration}")
-    private Long EXPIATION_TIME;
-    private final static String SECRET_KEY =
-            "JpLx8hyycP9RwoEJ+0sSj3p4xsIBmfYe4vVbequytgVfTqXN93NcaTlAVo9y3fpC" +
-                    "" +
-                    "DstegCKTDKFcU30iPKiRbQ==";
+    private Long EXPIRATION_TIME;
 
-
-    public JwtUtils(){
-        byte[] keyBytes = Base64.getDecoder().decode(SECRET_KEY.getBytes(StandardCharsets.UTF_8));
+    @Value("${jwt.secretKey}")
+    public void setSecretKey(String secretKey) {
+        byte[] keyBytes = Base64.getDecoder().decode(secretKey.getBytes(StandardCharsets.UTF_8));
         this.secretKey = new SecretKeySpec(keyBytes, "HmacSHA256");
     }
+   
+    
 
     public String generateToken(UserDetails userDetails){
         return Jwts.builder()
